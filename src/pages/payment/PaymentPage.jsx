@@ -165,6 +165,10 @@ const PaymentPage = () => {
 		navigate(-1);
 	};
 
+	const goto = (url) => {
+		window.open(url, '_blank');
+	};
+
 	if (loading) {
 		return <Loader />;
 	}
@@ -267,9 +271,9 @@ const PaymentPage = () => {
 										<p className="text-md text-gray-600">
 											Free cancellation before 48 hours of the event date. Cancellations after that may be for a partial refund.
 										</p>
-										<Link to="/cancel-refund-policy" target="_blank" rel="noopener noreferrer" className="underline font-bold mt-1">
+										<span onClick={() => goto('/terms-of-service')} className="underline font-bold mt-1 cursor-pointer">
 											Learn More
-										</Link>
+										</span>
 									</div>
 								</li>
 							</ul>
@@ -311,13 +315,13 @@ const PaymentPage = () => {
 								<div className="ml-2">
 									<label htmlFor="terms" className="text-md font-medium text-gray-900">
 										I have read and understood the{' '}
-										<Link to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-indigo-500 underline underline-offset-3">
+										<span onClick={() => goto('/privacy-policy')} className="text-indigo-500 underline underline-offset-3 cursor-pointer">
 											privacy policy{' '}
-										</Link>{' '}
+										</span>{' '}
 										and the{' '}
-										<Link to="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-indigo-500 underline underline-offset-3">
+										<span onClick={() => goto('/terms-of-service')} className="text-indigo-500 underline underline-offset-3 cursor-pointer">
 											terms of service.
-										</Link>
+										</span>
 									</label>
 								</div>
 							</div>

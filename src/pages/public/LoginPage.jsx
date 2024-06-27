@@ -87,6 +87,10 @@ const LoginPage = ({ isOpen, onClose }) => {
 		}
 	};
 
+	const goto = (url) => {
+		window.open(url, '_blank');
+	};
+
 	return (
 		isOpen && (
 			<div className="relative bg-white rounded-lg shadow">
@@ -135,18 +139,13 @@ const LoginPage = ({ isOpen, onClose }) => {
 										<div className="ml-2">
 											<label htmlFor="terms" className="text-sm font-medium text-gray-600">
 												I have read and understood the{' '}
-												<Link to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-indigo-500 underline underline-offset-3">
+												<span onClick={() => goto('/privacy-policy')} className="text-indigo-500 underline underline-offset-3 cursor-pointer">
 													privacy policy{' '}
-												</Link>{' '}
+												</span>{' '}
 												and the{' '}
-												<Link
-													to="/terms-of-service"
-													target="_blank"
-													rel="noopener noreferrer"
-													className="text-indigo-500 underline underline-offset-3"
-												>
+												<span onClick={() => goto('/terms-of-service')} className="text-indigo-500 underline underline-offset-3 cursor-pointer">
 													terms of service.
-												</Link>
+												</span>
 											</label>
 										</div>
 									</div>

@@ -166,17 +166,18 @@ const LoginPage = ({ isOpen, onClose }) => {
 									<p className="mx-2 min-w-fit text-sm text-gray-600">OR</p>
 									<div className="h-[1px] flex-1 bg-gray-100"></div>
 								</div>
-
-								<GoogleLogin
-									onSuccess={handleGoogleLogin}
-									onError={() => {
-										console.log('Login Failed');
-									}}
-									text="signup_with"
-									shape="pill"
-									width="380"
-									useOneTap
-								/>
+								<div className="flex flex-1 items-center justify-center ">
+									<GoogleLogin
+										onSuccess={handleGoogleLogin}
+										onError={() => {
+											console.log('Login Failed');
+										}}
+										text="signup_with"
+										shape="pill"
+										width="360"
+										useOneTap
+									/>
+								</div>
 							</div>
 						</>
 					) : (

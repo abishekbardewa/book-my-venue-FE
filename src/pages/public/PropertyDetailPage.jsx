@@ -84,7 +84,7 @@ const PropertyDetailPage = () => {
 					country={property?.country}
 					propertyImages={property?.propertyImages}
 				/>
-				<div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-7 md:gap-24 mt-2">
+				<div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-7 md:gap-24 mt-12">
 					<div className="col-span-3 lg:col-span-4 flex flex-col gap-8 ">
 						<PropertyDescriptions
 							ownerName={property?.owner?.firstName}

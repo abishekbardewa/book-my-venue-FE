@@ -7,7 +7,7 @@ const NextArrow = (props) => {
 	const { className, style, onClick } = props;
 	return (
 		<IoIosArrowDroprightCircle
-			className={`${className} w-10 h-10 absolute right-4 top-1/2 z-10 cursor-pointer bg-white rounded-full opacity-80 hover:bg-white`}
+			className={`${className}  z-10  w-10 h-10 absolute right-4 top-1/2  cursor-pointer bg-white rounded-full opacity-80 hover:bg-white`}
 			style={{
 				...style,
 				display: 'block',
@@ -23,7 +23,7 @@ const PrevArrow = (props) => {
 	const { className, style, onClick } = props;
 	return (
 		<IoIosArrowDropleftCircle
-			className={`${className} w-10 h-10 absolute left-4 top-1/2  z-10 cursor-pointer bg-white rounded-full opacity-80 hover:bg-white`}
+			className={`${className} z-10 w-10 h-10 absolute left-4 top-1/2   cursor-pointer bg-white rounded-full opacity-80 hover:bg-white`}
 			style={{
 				...style,
 				display: 'block',
@@ -50,12 +50,42 @@ const PropertyHead = ({ propertyName, city, country, propertyImages }) => {
 	}
 	const settings = {
 		lazyLoad: true,
+		dots: true,
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		initialSlide: 1,
 		nextArrow: <NextArrow />,
 		prevArrow: <PrevArrow />,
+		responsive: [
+			// {
+			// 	breakpoint: 1024,
+			// 	settings: {
+			// 		slidesToShow: 1,
+			// 		slidesToScroll: 1,
+			// 	},
+			// },
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					dots: true,
+					nextArrow: false,
+					prevArrow: false,
+				},
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					nextArrow: false,
+					prevArrow: false,
+					dots: true,
+				},
+			},
+		],
 	};
 	const openImageSlide = (idx) => {
 		console.log(idx);
@@ -123,11 +153,11 @@ const PropertyHead = ({ propertyName, city, country, propertyImages }) => {
 					Show All Photos
 				</button>
 			</div>
-			<div className="flex lg:hidden justify-center items-center w-full h-full overflow-hidden rounded-sm relative cursor-pointer">
+			<div className="flex lg:hidden justify-center items-center w-full h-full  rounded-sm relative cursor-pointer">
 				<Slider {...settings} className="w-full">
 					{propertyImages?.map((img, index) => (
-						<div key={index} className="w-full ">
-							<img className="w-[700px] h-[500px]  object-cover" src={img.imgUrl} alt="Img" />
+						<div key={index} className="w-full">
+							<img className="w-[100%] md:w-[800px] h-[300px] md:h-[500px]  object-cover" src={img.imgUrl} alt="Img" />
 						</div>
 					))}
 				</Slider>
@@ -137,7 +167,7 @@ const PropertyHead = ({ propertyName, city, country, propertyImages }) => {
 					<button className="absolute w-20 h-10 z-10 right-2 top-2 rounded-lg bg-white" onClick={toggleFullScreen}>
 						Close
 					</button>
-					{/* nextArrow: <NextArrow />, prevArrow: <PrevArrow />, */}
+
 					<Slider {...settings} initialSlide={initialSlide} className="w-screen h-screen flex items-center justify-center">
 						{propertyImages?.map((img, index) => (
 							<div key={index} className="w-screen h-auto ">

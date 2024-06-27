@@ -5,6 +5,7 @@ import { selectIsAuthenticated, selectUser } from '../../redux/slices/authSlice'
 import { ROLES } from '../../constants/roles';
 
 import MenuLink from './MenuLink';
+import BMVLOGOG from '/logo-BMvenue.svg';
 
 const PrivateNav = () => {
 	const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -34,7 +35,7 @@ const PrivateNav = () => {
 		event.stopPropagation();
 	};
 	return (
-		<div>
+		<>
 			<div className="relative inline-flex items-center justify-center  text-gray-400  hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden md:hidden">
 				<button type="button" onClick={toggleMenu} className={`${user ? 'hover:bg-primary p-2 rounded-md' : 'hidden'}`}>
 					<svg
@@ -59,7 +60,8 @@ const PrivateNav = () => {
 					</svg>
 				</button>
 				<Link to="/" className={`cursor-pointer rounded-3xl ${user ? 'hidden' : ''}`}>
-					<div className="text-xl  font-bold  text-primary">BookMyVenue</div>
+					{/* <div className="text-xl  font-bold  text-primary">BookMyVenue</div> */}
+					<img src={BMVLOGOG} height="140" width="140" alt="Logo" />
 				</Link>
 			</div>
 			<div
@@ -114,7 +116,7 @@ const PrivateNav = () => {
 					)}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

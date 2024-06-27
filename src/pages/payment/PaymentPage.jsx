@@ -18,6 +18,7 @@ import { PiWarningCircleFill } from 'react-icons/pi';
 
 import placeholder from '/placeholder.jpg';
 import PaymentLoader from '../../components/common/PaymentLoader';
+import BMVICON from '/icon-BMV.png';
 const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
 const PaymentPage = () => {
@@ -93,8 +94,8 @@ const PaymentPage = () => {
 					amount: orderResponse.order.amount,
 					currency: orderResponse.order.currency,
 					name: 'Book My Venue',
-					description: 'Test Transaction',
-					image: 'https://example.com/your_logo',
+					description: 'Order Pyment',
+					image: BMVICON,
 					order_id: orderResponse.order.id,
 					handler: async function (response) {
 						try {

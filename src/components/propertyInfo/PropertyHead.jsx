@@ -153,11 +153,11 @@ const PropertyHead = ({ propertyName, city, country, propertyImages }) => {
 					Show All Photos
 				</button>
 			</div>
-			<div className="flex lg:hidden justify-center items-center w-full h-full  rounded-sm relative cursor-pointer">
+			<div className="flex lg:hidden justify-center items-center w-full h-full overflow-x-clip rounded-sm relative cursor-pointer">
 				<Slider {...settings} className="w-full">
 					{propertyImages?.map((img, index) => (
 						<div key={index} className="w-full">
-							<img className="w-[100%] md:w-[800px] h-[300px] md:h-[500px]  object-cover" src={img.imgUrl} alt="Img" />
+							<img className="w-[100%] md:w-[800px] h-[300px] md:h-[500px] rounded-lg object-cover" src={img.imgUrl} alt="Img" />
 						</div>
 					))}
 				</Slider>

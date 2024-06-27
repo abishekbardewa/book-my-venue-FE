@@ -52,7 +52,7 @@ const PaymentSuccessPage = () => {
 	return (
 		<>
 			<main className="grid place-items-center bg-white px-6 py-24 sm:py-15 lg:px-8">
-				<div className="rounded-lg bg-white px-4 pb-4 pt-5 text-left border border-gray-100 sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
+				<div className="rounded-lg bg-white pb-4 pt-5 text-left border border-gray-100 sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
 					<div>
 						<div className="mx-auto flex items-center justify-center rounded-full">
 							<IoCheckmarkCircleSharp className="h-12 w-12 text-green-600" />
@@ -108,11 +108,11 @@ const PaymentSuccessPage = () => {
 								<p>If you have any questions, please don't hesitate to contact us.</p>
 							</div>
 						</div>
-						<div className="text-center text-md text-gray-500">
+						<div className="text-center text-md text-gray-500 px-5">
 							Conformation email has been sent to your Email ID : <span className=" font-semibold text-black">{booking?.user.email}</span>
 						</div>
 					</div>
-					<div className="mt-6 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+					<div className="mt-6 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3 px-5">
 						<Link
 							to="/customer/my-bookings"
 							className="inline-flex w-full justify-center rounded-full bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-gray:outline-indigo-600 sm:col-start-2"

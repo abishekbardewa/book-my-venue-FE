@@ -35,8 +35,8 @@ const PrivateNav = () => {
 		event.stopPropagation();
 	};
 	return (
-		<>
-			<div className="relative inline-flex items-center justify-center  text-gray-400  hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden md:hidden">
+		<div>
+			<div className="relative inline-flex items-center justify-center  text-gray-400  hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden md:hidden ">
 				<button type="button" onClick={toggleMenu} className={`${user ? 'hover:bg-primary p-2 rounded-md' : 'hidden'}`}>
 					<svg
 						className={`h-6 w-6  ${isMenuOpen ? 'hidden' : 'block'}`}
@@ -59,7 +59,7 @@ const PrivateNav = () => {
 						<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
-				<Link to="/" className={`cursor-pointer rounded-3xl ${user ? 'hidden' : ''}`}>
+				<Link to="/" className={`cursor-pointer rounded-3xl mt-2 ${user ? 'hidden' : ''}`}>
 					{/* <div className="text-xl  font-bold  text-primary">BookMyVenue</div> */}
 					<img src={BMVLOGOG} height="140" width="140" alt="Logo" />
 				</Link>
@@ -116,7 +116,7 @@ const PrivateNav = () => {
 					)}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

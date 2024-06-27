@@ -174,8 +174,8 @@ const LoginPage = ({ isOpen, onClose }) => {
 										}}
 										text="signup_with"
 										shape="pill"
-										width="360"
 										useOneTap
+										size="large"
 									/>
 								</div>
 							</div>

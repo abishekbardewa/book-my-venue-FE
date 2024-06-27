@@ -209,18 +209,16 @@ const PaymentPage = () => {
 															{booking?.city}, {booking?.country}
 														</p>
 													</div>
-													<div className="flex flex-col flex-wrap md:flex-nowrap justify-start gap-2 mt-4 w-full">
-														<p className="w-fit bg-primary text-white text-md capitalize px-2.5 py-1.5 rounded-full  ">
-															Checkin: {booking?.checkInTime}
-														</p>
-														<p className="w-fit bg-primary text-white text-md capitalize px-2.5 py-1.5 rounded-full ">
-															Checkout: {booking?.checkOutTime}
-														</p>
-													</div>
 												</div>
 												<div className="mt-4 sm:mt-0 text-left md:text-right">
 													<p className="text-md font-medium text-gray-900"> {formatPrice(booking?.price)} per day</p>
 												</div>
+											</div>
+											<div className="flex flex-col flex-wrap md:flex-nowrap justify-start gap-2 mt-4 w-full">
+												<p className="w-fit bg-primary text-white text-md capitalize px-2.5 py-1.5 rounded-full  ">Checkin: {booking?.checkInTime}</p>
+												<p className="w-fit bg-primary text-white text-md capitalize px-2.5 py-1.5 rounded-full ">
+													Checkout: {booking?.checkOutTime}
+												</p>
 											</div>
 										</div>
 									</div>

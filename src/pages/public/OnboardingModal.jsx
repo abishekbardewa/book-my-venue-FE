@@ -31,7 +31,6 @@ const OnboardingModal = ({ user, onClose }) => {
 			setValue('lastName', user?.lastName);
 			setValue('email', user?.email);
 			setValue('phone', user?.phone);
-			setValue('isNewUser', false);
 			setValue('avatar', user.avatar);
 		}
 	}, [user, setValue]);

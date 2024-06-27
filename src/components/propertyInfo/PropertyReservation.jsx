@@ -10,6 +10,7 @@ import { db } from '../../dexie/db';
 import Button from '../common/Button';
 import { formatPrice, getDatesBetween } from '../../utils';
 import { ROLES } from '../../constants/roles';
+import { formatDate } from 'date-fns';
 
 const PropertyReservation = ({ property }) => {
 	const [showLoginModal, setShowLoginModal] = useState(false);

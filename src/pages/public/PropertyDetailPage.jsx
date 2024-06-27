@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import { axiosPrivate } from '../../services/axios.service';
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import customMarkerIcon from '/MapMarker2.png';
-import PropertyDescriptions from '../../components/propertyDetails/PropertyDescriptions';
-import PropertyReservation from '../../components/propertyDetails/PropertyReservation';
-import PropertyHead from '../../components/propertyDetails/PropertyHead';
-import Reviews from '../../components/propertyDetails/Reviews';
+
 import Loader from '../../components/common/Loader';
+import Reviews from '../../components/propertyInfo/Reviews';
+import PropertyHead from '../../components/propertyInfo/PropertyHead';
+import PropertyReservation from '../../components/propertyInfo/PropertyReservation';
+import PropertyDescriptions from '../../components/propertyInfo/PropertyDescriptions';
 
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 

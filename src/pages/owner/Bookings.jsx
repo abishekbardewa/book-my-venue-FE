@@ -186,7 +186,7 @@ const Bookings = () => {
 									<div className="mt-6 mb-6">
 										<h3 className="mb-4 text-sm font-medium leading-6 text-gray-900">Customer Info</h3>
 										<div className="-my-3 divide-y divide-gray-100 text-sm leading-6 rounded-xl border border-gray-200 px-2">
-											<div className="flex justify-between gap-x-4 py-2">
+											<div className="flex justify-between gap-x-4 py-2 flex-wrap">
 												<dt className="text-gray-500">Name</dt>
 												<dd className="flex items-start gap-x-2">
 													<div className="font-medium text-gray-900">
@@ -194,7 +194,7 @@ const Bookings = () => {
 													</div>
 												</dd>
 											</div>
-											<div className="flex justify-between gap-x-4 py-2">
+											<div className="flex justify-between gap-x-4 py-2 flex-wrap">
 												<dt className="text-gray-500">Email</dt>
 												<dd className="flex items-start gap-x-2">
 													<div className="font-medium text-gray-900">{ele?.user?.email}</div>

@@ -1,5 +1,3 @@
-import { format } from 'date-fns';
-
 export const formatDateRange = (startDate, endDate) => {
 	const start = new Date(startDate);
 	const end = new Date(endDate);

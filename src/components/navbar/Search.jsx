@@ -87,7 +87,7 @@ const VenueSearch = ({ onCitySelect, onSearchVenues, city, search }) => {
 						onSelect={handleOnSelect}
 						onClear={handleOnClear}
 						maxResults={5}
-						autoFocus
+						// autoFocus
 						formatResult={formatResult}
 						placeholder="Search venues..."
 						className="search"

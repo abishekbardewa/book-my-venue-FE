@@ -18,9 +18,9 @@ const Reviews = ({ reviews }) => {
 
 	const settings = {
 		className: 'center',
-		infinite: true,
-		centerMode: true,
-		// centerPadding: '60px',
+		infinite: false,
+		// centerMode: true,
+		centerPadding: '60px',
 		slidesToShow: 3,
 		speed: 500,
 		adaptiveHeight: false,

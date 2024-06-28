@@ -187,7 +187,7 @@ const MyBookings = () => {
 																{formatPrice(ele?.payments[0].amount)} <StatusBadge status={ele?.payments[0].status} type="payment" />
 															</dd>
 														</div>
-														<div className="text-right md:text-left">
+														<div className="sm:text-right md:text-left">
 															<dt className="font-medium text-gray-900">Event Date</dt>
 															<dd className="mt-1 text-gray-500">{formatDateRange(ele?.startDate, ele?.endDate)}</dd>
 														</div>

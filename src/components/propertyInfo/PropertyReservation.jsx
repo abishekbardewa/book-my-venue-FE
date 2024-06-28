@@ -112,7 +112,7 @@ const PropertyReservation = ({ property }) => {
 		<>
 			<div className="bg-white rounded-xl shadow-lg border-[1px] border-neutral-200 overflow-hidden">
 				<div className="flex flex-row items-center gap-0 p-4">
-					<div className="text-2xl font-semibold">{formatPrice(totalPrice)}</div>
+					<div className="text-2xl font-semibold">{formatPrice(property?.price)}</div>
 					<div className=" text-neutral-600 ml-2 font-normal">Per Day</div>
 				</div>
 				<hr className="bg-gray-50" />

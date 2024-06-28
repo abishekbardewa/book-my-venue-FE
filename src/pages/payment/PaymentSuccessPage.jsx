@@ -4,16 +4,8 @@ import { axiosPrivate } from '../../services/axios.service';
 import { formatDateRange, formatPrice } from '../../utils';
 import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 import Loader from '../../components/common/Loader';
-
-function formatDate(dateString) {
-	return new Date(dateString).toLocaleString('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		// hour: '2-digit',
-		// minute: '2-digit'
-	});
-}
+import BMVLOGOG from '/logo-BMvenue.svg';
+import StatusBadge from '../../components/common/StatusBadge';
 
 const PaymentSuccessPage = () => {
 	const location = useLocation();
@@ -25,6 +17,10 @@ const PaymentSuccessPage = () => {
 	const bookingId = searchParams.get('id');
 
 	useEffect(() => {
+		if (!location.state || !location.state.fromPayment) {
+			navigate('/');
+			return;
+		}
 		if (!bookingId) {
 			navigate('/');
 			return;
@@ -43,7 +39,7 @@ const PaymentSuccessPage = () => {
 		};
 
 		getBooking();
-	}, [bookingId, navigate]);
+	}, [bookingId, navigate, location]);
 
 	if (loading) {
 		return <Loader />;
@@ -51,68 +47,74 @@ const PaymentSuccessPage = () => {
 
 	return (
 		<>
-			<main className="grid place-items-center bg-white px-6 py-24 sm:py-15 lg:px-8">
-				<div className="rounded-lg bg-white pb-4 pt-5 text-left border border-gray-100 sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
-					<div>
-						<div className="mx-auto flex items-center justify-center rounded-full">
-							<IoCheckmarkCircleSharp className="h-12 w-12 text-green-600" />
-						</div>
+			<main className="flex flex-1 flex-col  items-center justify-center px-2 py-24 sm:py-15 ">
+				<div className=" bg-white p-6  rounded-lg max-w-[600px] mx-auto w-full shadow-md ">
+					<div className="flex items-center justify-center rounded-full">
+						<IoCheckmarkCircleSharp className="h-12 w-12 text-green-600" />
+					</div>
 
-						<div className="mt-4 text-center sm:mt-5">
-							<h3 className="text-lg font-semibold leading-6 text-gray-900" id="modal-title">
-								Payment successful
-							</h3>
-							{/* <div className="mt-3">
-                <p className="text-md text-gray-500">
-                  Your payment of <span className=' font-semibold text-black'>{formatPrice(booking?.payments[0]?.amount)}</span> for the event on <span className=' font-semibold text-black'>{formatDateRange(booking?.startDate, booking?.endDate)}{' '}</span>
-                  at <span className=' font-semibold text-black'>{booking?.property?.propertyName}</span> has been successfully processed.
-                </p>
-              </div> */}
-							<div className="font-sans max-w-[600px] mx-auto p-5">
-								<h1 className="text-[#b4457f] text-2xl font-bold mt-0">BookMyVenue</h1>
-								<h2 className="text-[#4a4a4a]">Booking Confirmation</h2>
-								<p>Dear {booking?.user?.firstName},</p>
-								<p>Thank you for your booking?. Here are the details:</p>
-								<table className="w-full border-collapse mb-5">
-									<tbody>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Booking ID</td>
-											<td className="p-2.5 border border-gray-300">{booking?.id}</td>
-										</tr>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Property</td>
-											<td className="p-2.5 border border-gray-300">{booking?.property.propertyName}</td>
-										</tr>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Check-in</td>
-											<td className="p-2.5 border border-gray-300">{formatDate(booking?.startDate)}</td>
-										</tr>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Check-out</td>
-											<td className="p-2.5 border border-gray-300">{formatDate(booking?.endDate)}</td>
-										</tr>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Status</td>
-											<td className="p-2.5 border border-gray-300 text-yellow-600">{booking?.bookingStatus}</td>
-										</tr>
-										<tr>
-											<td className="p-2.5 border border-gray-300 font-bold">Amount Paid</td>
-											<td className="p-2.5 border border-gray-300">Rs.{booking?.payments[0].amount}</td>
-										</tr>
-									</tbody>
-								</table>
-								<p>
-									Please note that your booking is currently <span className="text-yellow-600">{booking?.bookingStatus}</span>. We will notify you
-									once it's approved.
-								</p>
-								<p>If you have any questions, please don't hesitate to contact us.</p>
+					<div className="mt-4 text-center sm:mt-5">
+						<h3 className="text-lg font-semibold leading-6 text-gray-900" id="modal-title">
+							Payment successful
+						</h3>
+
+						<div className="flex flex-col items-center justify-center my-5">
+							<img src={BMVLOGOG} height="180" width="180" alt="Logo" />
+						</div>
+						<h2 className="text-gray-900 font-semibold text-lg">Booking Confirmation</h2>
+						<p className="text-gray-900">Dear {booking?.user?.firstName},</p>
+						<p className="text-gray-900">Thank you for your booking. Here are the details:</p>
+						<div className="my-5 divide-y divide-gray-100 text-sm leading-6 rounded-xl border border-gray-200 px-2">
+							<div className="flex justify-between gap-x-4 py-2">
+								<dt className="text-gray-900 font-bold whitespace-nowrap text-base">Booking Id</dt>
+								<dd className="text-gray-900  whitespace-nowrap text-base">
+									<time>{booking?.id.substring(0, 8).toUpperCase()}</time>
+								</dd>
+							</div>
+
+							<div className="flex justify-between gap-x-4 py-2 flex-wrap">
+								<dt className="text-gray-900 font-bold text-base">Property</dt>
+								<dd className="text-gray-900 text-base">
+									<time>{booking?.property.propertyName}</time>
+								</dd>
+							</div>
+							<div className="flex justify-between gap-x-4 py-2 flex-wrap">
+								<dt className="text-gray-900 font-bold text-base">Event Date</dt>
+								<dd className="text-gray-900 text-base">
+									<time>{formatDateRange(booking?.startDate, booking?.endDate)}</time>
+								</dd>
+							</div>
+							<div className="flex justify-between gap-x-4 py-2 flex-wrap">
+								<dt className="text-gray-900 font-bold text-base">Booking Status</dt>
+								<dd className="flex items-start gap-x-2 text-base">
+									<StatusBadge status={booking?.bookingStatus} type="booking" />
+								</dd>
+							</div>
+							<div className="flex justify-between gap-x-4 py-2">
+								<dt className="text-gray-900 font-bold text-base">Amount Paid</dt>
+								<dd className="flex items-start gap-x-2 text-base">
+									<div className="font-medium text-gray-900">{formatPrice(booking?.payments[0].amount)}</div>
+
+									<StatusBadge status={booking?.payments[0].status} type="payment" />
+								</dd>
 							</div>
 						</div>
-						<div className="text-center text-md text-gray-500 px-5">
-							Conformation email has been sent to your Email ID : <span className=" font-semibold text-black">{booking?.user.email}</span>
+						<div className="flex flex-1 flex-col items-center justify-center gap-3">
+							<div>
+								<p className="text-center text-md text-gray-900">
+									Please note that your booking is currently <span className="text-yellow-600">{booking?.bookingStatus}</span>.
+								</p>
+								<p className="text-center text-md text-gray-900"> We will notify you once it is approved.</p>
+							</div>
+
+							<p className="text-center text-md text-gray-900">
+								Conformation email has been sent to your Email ID : <span className=" font-semibold text-gray-900">{booking?.user.email}</span>
+							</p>
+							<p className="text-center text-md text-gray-900">If you have any questions, please do not hesitate to contact us.</p>
 						</div>
 					</div>
-					<div className="mt-6 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3 px-5">
+
+					<div className="mt-10  sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3 ">
 						<Link
 							to="/customer/my-bookings"
 							className="inline-flex w-full justify-center rounded-full bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-gray:outline-indigo-600 sm:col-start-2"

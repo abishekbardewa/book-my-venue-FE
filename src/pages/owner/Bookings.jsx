@@ -208,9 +208,11 @@ const Bookings = () => {
 											</div>
 										</div>
 									</div>
-									<div className="text-xs text-red-600 font-medium">
-										Take action before: {format(calculateDeadline(ele?.bookingDate), "MMM d, yyyy 'at' h:mm a")}
-									</div>
+									{ele?.bookingStatus === 'AWAITING_OWNER_APPROVAL' && (
+										<div className="text-xs text-red-600 font-medium">
+											Take action before: {format(calculateDeadline(ele?.bookingDate), "MMM d, yyyy 'at' h:mm a")}
+										</div>
+									)}
 									{ele?.bookingStatus === 'AWAITING_OWNER_APPROVAL' && (
 										<div className="flex justify-between gap-x-4 text-sm py-3">
 											<Button

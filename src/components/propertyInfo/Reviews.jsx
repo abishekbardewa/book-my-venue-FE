@@ -17,10 +17,10 @@ const Reviews = ({ reviews }) => {
 	};
 
 	const settings = {
-		className: 'center',
+		// className: 'center',
 		infinite: false,
 		// centerMode: true,
-		centerPadding: '60px',
+		// centerPadding: '60px',
 		slidesToShow: 3,
 		speed: 500,
 		adaptiveHeight: false,
@@ -44,8 +44,6 @@ const Reviews = ({ reviews }) => {
 				breakpoint: 640,
 				settings: {
 					slidesToShow: 1,
-					centerMode: false,
-					className: '',
 				},
 			},
 		],
@@ -66,7 +64,7 @@ const Reviews = ({ reviews }) => {
 					sliderRef = slider;
 				}}
 				{...settings}
-				className="slider-container"
+				className="slider-container  overflow-hidden"
 			>
 				{reviews?.map((review) => (
 					<div key={review.id} className="flex flex-1 col-span-1 h-100">

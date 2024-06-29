@@ -87,7 +87,7 @@ const PropertyPage = () => {
 					<h2 className="text-2xl font-bold leading-7 text-gray-50 sm:truncate sm:text-3xl sm:tracking-tight">Property</h2>
 					<p className="mt-1 text-sm text-gray-50">A list of all the properties in your account.</p>
 				</div>
-				<div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+				<div className="mt-4  sm:flex-none">
 					<Link to="/owner/add-property">
 						<Button buttonType="button" size="md" variant="filled" innerClass="w-50 bg-white " innerTextClass="text-primary " startIcon={<FaPlus />}>
 							Add Property

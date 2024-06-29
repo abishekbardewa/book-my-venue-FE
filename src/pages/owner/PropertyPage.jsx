@@ -105,7 +105,7 @@ const PropertyPage = () => {
 									<table className="min-w-full divide-y divide-gray-300">
 										<thead>
 											<tr>
-												<th scope="col" className="w-[400px] py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+												<th scope="col" className="min-w-[400px] md:w-[400px] py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
 													Name
 												</th>
 												<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -149,7 +149,6 @@ const PropertyPage = () => {
 													<td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
 														<div className="text-gray-900">{property?.city}</div>
 													</td>
-
 													<td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
 														{format(new Date(property?.updatedAt), 'dd MMMM yyyy')}
 													</td>

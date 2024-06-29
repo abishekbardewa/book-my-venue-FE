@@ -12,12 +12,12 @@ import { handleLoginSuccess } from '../../services/user.service';
 import { ROLES } from '../../constants/roles';
 import { toast } from 'react-toastify';
 const inputStyle = {
-	width: '2.5rem',
-	height: '2.5rem',
-	margin: '0 0.5rem',
+	width: '38px',
+	height: '38px',
+	margin: '0 4px',
 	fontSize: '1rem',
 	borderRadius: '0.5rem',
-	border: '2px solid #ccc',
+	// border: '1px solid #ccc',
 	textAlign: 'center',
 	color: '#000',
 	backgroundColor: '#fff',

@@ -105,7 +105,7 @@ const PropertyPage = () => {
 									<table className="min-w-full divide-y divide-gray-300">
 										<thead>
 											<tr>
-												<th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+												<th scope="col" className="w-[400px] py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
 													Name
 												</th>
 												<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
@@ -128,7 +128,7 @@ const PropertyPage = () => {
 										<tbody className="divide-y divide-gray-200 bg-white">
 											{properties.map((property) => (
 												<tr key={property?.id}>
-													<td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+													<td className=" py-5 pl-4 pr-3 text-sm sm:pl-0">
 														<Link to={`/property-detail/${property?.id}`} className="flex items-center">
 															<div className="h-14 w-14 flex-shrink-0">
 																<img

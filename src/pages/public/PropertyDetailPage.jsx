@@ -94,6 +94,7 @@ const PropertyDetailPage = () => {
 							address={property?.address}
 							tags={property?.propertyTags}
 							amenities={property?.amenities}
+							extraInfo={property?.extraInfo}
 						/>
 					</div>
 					<div className="order-first mb-10 md:order-last md:col-span-3">

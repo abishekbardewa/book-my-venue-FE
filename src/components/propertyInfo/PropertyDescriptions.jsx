@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from '../Avatar';
 import { FaLocationDot } from 'react-icons/fa6';
 
-const PropertyDescriptions = ({ ownerName, capacity, description, avatar, address, tags, amenities }) => {
+const PropertyDescriptions = ({ ownerName, capacity, description, avatar, address, tags, amenities, extraInfo }) => {
 	return (
 		<>
 			<div className="flex flex-col gap-5">
@@ -48,6 +48,15 @@ const PropertyDescriptions = ({ ownerName, capacity, description, avatar, addres
 									{amenity}
 								</div>
 							))}
+						</div>
+					</>
+				)}
+				{extraInfo && (
+					<>
+						<hr className="text-gray-100" />
+						<div className="text-md font-light text-neutral-600">
+							<h1 className="text-black font-medium text-xl mb-3">Extra Information</h1>
+							{extraInfo}
 						</div>
 					</>
 				)}

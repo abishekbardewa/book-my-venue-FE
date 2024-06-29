@@ -29,6 +29,7 @@ const PaymentPage = () => {
 	const [booking, setBooking] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [paymentLoading, setPaymentLoading] = useState(false);
+	const [processLoading, setProcessLoading] = useState(false);
 	const [bookingDates, setBookingDates] = useState([]);
 	const [termsChecked, setTermsChecked] = useState(false);
 
@@ -67,8 +68,10 @@ const PaymentPage = () => {
 	const handlePaymentModalDissmiss = useCallback(async (order) => {
 		try {
 			await axiosPrivate.put(`booking/remove-booking/${order.bookingId}`);
+			setProcessLoading(false);
 		} catch (err) {
 			console.log('Order Dissmiss Removed', err);
+			setProcessLoading(false);
 		}
 	}, []);
 
@@ -78,6 +81,7 @@ const PaymentPage = () => {
 			toast.error('You must agree to the terms and conditions before proceeding.');
 			return;
 		}
+		setProcessLoading(true);
 		try {
 			const { data } = await axiosPrivate.post('/payment/create-payment-order', {
 				amount: booking.totalPrice,
@@ -109,8 +113,9 @@ const PaymentPage = () => {
 								amount: orderResponse.order.amount,
 								status: PAYMENT_STATUS.SUCCESS,
 							});
-							console.log(data);
+
 							setPaymentLoading(false);
+							setProcessLoading(false);
 							navigate(`/payment-success?id=${orderResponse.bookingId}`, { state: { fromPayment: true } });
 						} catch (err) {
 							console.log('Error', err);
@@ -140,6 +145,7 @@ const PaymentPage = () => {
 						status: PAYMENT_STATUS.FAILED,
 					});
 					toast.error('Payment failed, please try again');
+					setProcessLoading(false);
 				});
 			} else {
 				console.log(data);
@@ -149,6 +155,7 @@ const PaymentPage = () => {
 			console.log(err.response.data.error);
 			setBookingErrMsg(err.response.data.error);
 			setShowModal(true);
+			setProcessLoading(false);
 		}
 	}, [Razorpay, user?.email, user?.firstName, user?.lastName, booking, handlePaymentModalDissmiss, termsChecked, navigate]);
 
@@ -269,7 +276,7 @@ const PaymentPage = () => {
 										<p className="text-md text-gray-600">
 											Free cancellation before 48 hours of the event date. Cancellations after that may be for a partial refund.
 										</p>
-										<span onClick={() => goto('/terms-of-service')} className="underline font-bold mt-1 cursor-pointer">
+										<span onClick={() => goto('/cancel-refund-policy')} className="underline font-bold mt-1 cursor-pointer">
 											Learn More
 										</span>
 									</div>
@@ -332,7 +339,7 @@ const PaymentPage = () => {
 									onClick={handleGoBack}
 									innerClass="w-[100%] lg:w-[50%] bg-white"
 									innerTextClass="text-primary"
-									disabled={loading}
+									disabled={loading || processLoading}
 								>
 									Go back
 								</Button>
@@ -344,9 +351,9 @@ const PaymentPage = () => {
 									innerClass="w-[100%] lg:w-[50%] bg-primary"
 									innerTextClass="text-white"
 									onClick={handlePayment}
-									disabled={loading}
+									disabled={loading || processLoading}
 								>
-									Pay now
+									{processLoading ? 'Processing' : 'Pay now'}
 								</Button>
 							</div>
 						</section>

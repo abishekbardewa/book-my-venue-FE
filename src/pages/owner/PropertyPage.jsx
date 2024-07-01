@@ -63,8 +63,8 @@ const PropertyPage = () => {
 				toast.error(data.message);
 			}
 		} catch (error) {
-			console.error('Error deleteing property:', error);
-			toast.error('Something went wrong');
+			console.error('Error deleteing property:', error.response.data.msg);
+			toast.error(error.response.data.msg);
 		} finally {
 			setLoading(false);
 			setShowModal(false);

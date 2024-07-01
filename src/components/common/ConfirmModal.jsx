@@ -14,6 +14,7 @@ const ConfirmModal = ({
 	cancelDisabled,
 	btnClass,
 	icon,
+	isBtn = true,
 }) => {
 	const [showModal, setShowModal] = useState(false);
 
@@ -69,30 +70,32 @@ const ConfirmModal = ({
 						<h3 className="mb-5 text-lg font-normal text-gray-500">{title}</h3>
 						{subtitle && <p className="mb-5 text-gray-700">{subtitle}</p>}
 						<p className="mb-5 text-gray-700">{message}</p>
-						<div className="flex flex-col md:flex-row gap-3 md:gap-0  justify-center items-center">
-							<button
-								disabled={confirmDisabled}
-								type="button"
-								className={` ${btnClass} focus:ring-4 focus:outline-none  border  font-medium  rounded-full text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 w-full md:w-[50%] justify-center ${
-									confirmDisabled ? 'cursor-not-allowed' : ''
-								}`}
-								onClick={onConfirm}
-							>
-								{confirmDisabled ? <LuLoader2 className="w-6 h-6 text-white animate-spin" /> : confirmText}
-							</button>
-							{onCancel && cancelText && (
+						{isBtn && (
+							<div className="flex flex-col md:flex-row gap-3 md:gap-0  justify-center items-center">
 								<button
-									disabled={cancelDisabled}
+									disabled={confirmDisabled}
 									type="button"
-									className={`py-2.5 px-5 w-full md:w-[50%] text-sm font-medium text-gray-900 focus:outline-none bg-white  rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100  ${
-										cancelDisabled ? 'cursor-not-allowed' : ''
+									className={` ${btnClass} focus:ring-4 focus:outline-none  border  font-medium  rounded-full text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 w-full md:w-[50%] justify-center ${
+										confirmDisabled ? 'cursor-not-allowed' : ''
 									}`}
-									onClick={onCancel}
+									onClick={onConfirm}
 								>
-									{cancelText}
+									{confirmDisabled ? <LuLoader2 className="w-6 h-6 text-white animate-spin" /> : confirmText}
 								</button>
-							)}
-						</div>
+								{onCancel && cancelText && (
+									<button
+										disabled={cancelDisabled}
+										type="button"
+										className={`py-2.5 px-5 w-full md:w-[50%] text-sm font-medium text-gray-900 focus:outline-none bg-white  rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100  ${
+											cancelDisabled ? 'cursor-not-allowed' : ''
+										}`}
+										onClick={onCancel}
+									>
+										{cancelText}
+									</button>
+								)}
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

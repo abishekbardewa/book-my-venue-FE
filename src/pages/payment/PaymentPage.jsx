@@ -370,6 +370,7 @@ const PaymentPage = () => {
 					cancelDisabled={loading}
 					btnClass={'text-white !w-[100%] bg-warning-600 hover:bg-warning-800 focus:ring-warning-300 border-warning-600'}
 					icon={<PiWarningCircleFill className="w-10 h-10 text-warning-500" />}
+					isBtn={false}
 				/>
 			)}
 		</>

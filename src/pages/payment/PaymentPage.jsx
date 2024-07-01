@@ -51,7 +51,7 @@ const PaymentPage = () => {
 			}
 
 			const foundBooking = await db.bookings.get(parseInt(bookingId));
-			console.log(foundBooking);
+
 			if (foundBooking) {
 				const allDates = getDatesBetween(foundBooking.startDate, foundBooking.endDate);
 
@@ -90,7 +90,6 @@ const PaymentPage = () => {
 				userId: booking?.userId,
 				propertyId: booking?.propertyId,
 			});
-			console.log(data);
 			if (data.success) {
 				const { data: orderResponse } = data;
 				const options = {
@@ -134,8 +133,6 @@ const PaymentPage = () => {
 				const rzpay = new Razorpay(options);
 				rzpay.open();
 				rzpay.on('payment.failed', async (res) => {
-					console.log('FAILED', res, orderResponse);
-
 					await axiosPrivate.post('/payment/confirm-payment', {
 						bookingId: orderResponse.bookingId,
 						orderId: orderResponse.order.id,

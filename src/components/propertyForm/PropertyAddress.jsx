@@ -42,7 +42,6 @@ const PropertyAddress = ({ handleCityChange, selectedCity, setCord, cordinate, s
 	const onPlaceChanged = () => {
 		if (autocomplete !== null) {
 			const place = autocomplete.getPlace();
-			console.log(place);
 			if (place.geometry) {
 				const lat = place.geometry.location.lat();
 				const lng = place.geometry.location.lng();
@@ -60,8 +59,7 @@ const PropertyAddress = ({ handleCityChange, selectedCity, setCord, cordinate, s
 						break;
 					}
 				}
-				// Update the form with the postal code
-				console.log('pincode', postalCode);
+
 				if (postalCode) {
 					setValue('pincode', postalCode);
 				}

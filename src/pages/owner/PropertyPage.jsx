@@ -28,7 +28,7 @@ const PropertyPage = () => {
 		try {
 			setLoading(true);
 			const { data } = await axiosPrivate.get(`/property/owner-property/${user?.id}?page=${page}&limit=${limit}`);
-			console.log(data);
+
 			setTotalCount(data.totalCount);
 			setProperties(data.data);
 		} catch (error) {

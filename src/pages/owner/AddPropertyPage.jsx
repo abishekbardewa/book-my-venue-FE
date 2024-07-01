@@ -42,11 +42,9 @@ const AddPropertyPage = () => {
 	};
 
 	const handleSetCategories = (eventValue) => {
-		console.log(categories);
 		setCategories(eventValue);
 	};
 	const handleAmenityChange = (amenityValue) => {
-		console.log(amenities);
 		setAmenities(amenityValue);
 	};
 	const handleImagesChange = (images) => {
@@ -80,11 +78,9 @@ const AddPropertyPage = () => {
 	} = methods;
 
 	const onSubmit = async (data) => {
-		console.log(data);
 		const checkInTime = convertTo12HourFormat(data?.checkInTime);
 		const checkOutTime = convertTo12HourFormat(data?.checkOutTime);
-		// console.log({ checkInTime, checkOutTime });
-		// return;
+
 		let fd = new FormData();
 		fd.append('propertyName', data.propertyName);
 		fd.append('description', data.description);
@@ -156,7 +152,6 @@ const AddPropertyPage = () => {
 		setNoImgErr(false);
 		setCatErr(false);
 		const isValid = await trigger();
-		console.log(isValid);
 
 		if (isValid && currentIndex < views.length - 1) {
 			const nextView = views[currentIndex + 1];

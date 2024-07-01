@@ -20,7 +20,7 @@ export default function UserMenu() {
 	const handleLogout = async () => {
 		try {
 			const { data } = await axiosPrivate.post('/auth/logout', {});
-			console.log(data);
+
 			dispatch(clearUser());
 			navigate('/');
 		} catch (err) {

@@ -37,6 +37,7 @@ const PropertyReservation = ({ property }) => {
 			const additionalDates = [currentDate, tomorrow, dayAfterTomorrow];
 
 			const allDatesWithAdditional = [...new Set([...allDates, ...additionalDates])];
+			// const allDatesWithAdditional = allDates;
 			setDates(allDatesWithAdditional);
 
 			if (allDatesWithAdditional.some((date) => isSameDay(date, currentDate))) {
@@ -67,7 +68,6 @@ const PropertyReservation = ({ property }) => {
 		setTotalPrice(total);
 	};
 	const bookThisPlace = async (e) => {
-		console.log(e);
 		e.preventDefault();
 		if (!user) {
 			setShowLoginModal(true);

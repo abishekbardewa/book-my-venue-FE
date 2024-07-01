@@ -88,7 +88,6 @@ const PropertyHead = ({ propertyName, city, country, propertyImages }) => {
 		],
 	};
 	const openImageSlide = (idx) => {
-		console.log(idx);
 		setInitialSlide(idx);
 		setIsFullScreen(true);
 	};

@@ -46,7 +46,6 @@ const Bookings = () => {
 		try {
 			setInternalLoading(true);
 			const { data } = await axiosPrivate.get(`/booking/owner-bookings/${user?.id}?page=${page}&limit=${limit}&status=${view}`);
-			console.log(data);
 			setTotalCount(data.totalCount);
 			setBookings(data.data);
 		} catch (error) {
@@ -74,7 +73,6 @@ const Bookings = () => {
 				paymentStatus,
 				role: ROLES.OWNER,
 			};
-			console.log(reqObj);
 			const { data } = await axiosPrivate.put(`/booking/${selectedBookingId}`, reqObj);
 			if (data.success) {
 				toast.success(data.message);
@@ -98,7 +96,6 @@ const Bookings = () => {
 	};
 
 	const handleFilter = (status) => {
-		console.log(status);
 		setView(status);
 		setPage(1);
 	};

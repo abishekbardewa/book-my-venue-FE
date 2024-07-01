@@ -4,7 +4,8 @@ import { formatPrice } from '../../utils';
 
 const PropertyCard = ({ property }) => {
 	return (
-		<div className="h-full bg-white rounded-lg border border-gray-50 hover:border-slate-200 transition-transform duration-200 hover:scale-105 mb-5">
+		// hover:border-slate-200 transition-transform duration-200 hover:scale-105
+		<div className="h-full property-card bg-white rounded-lg border border-gray-50 hover:bg-gray-25 mb-5">
 			<div className="w-full aspect-square mb-2">
 				{property?.propertyImages.length > 0 ? (
 					<img src={property.propertyImages[0]?.imgUrl} alt="" className="object-cover h-full w-full rounded-tr-lg rounded-tl-lg" />

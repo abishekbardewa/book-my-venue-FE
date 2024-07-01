@@ -42,7 +42,6 @@ const MyBookings = () => {
 		try {
 			setInternalLoading(true);
 			const { data } = await axiosPrivate.get(`/booking/customer-bookings/${user?.id}?page=${page}&limit=${limit}&status=${view}`);
-			console.log(data);
 
 			setTotalCount(data.totalCount);
 			setBookings(data.data);
@@ -58,7 +57,6 @@ const MyBookings = () => {
 	}, [getUserBookings, page, user?.id]);
 
 	const handleAcceptReject = (bookingId) => {
-		console.log('here');
 		setSelectedBookingId(bookingId);
 		setShowModal(true);
 	};
@@ -98,7 +96,6 @@ const MyBookings = () => {
 	};
 
 	const handleReviewConfirm = async (rating, review, type, id = null) => {
-		console.log(rating, review, type);
 		setReviewLoading(true);
 		try {
 			let reqObj = { rating, review };
@@ -108,7 +105,7 @@ const MyBookings = () => {
 				reqObj.propertyId = selectedBooking?.property.id;
 				reqObj.bookingId = selectedBooking?.id;
 				const { data: adddata } = await axiosPrivate.post(`/review`, reqObj);
-				console.log(adddata);
+
 				if (adddata.success) {
 					toast.success('Review added');
 					setSelectedBooking(null);
@@ -127,7 +124,6 @@ const MyBookings = () => {
 				} else {
 					toast.error(data.message);
 				}
-				console.log(data);
 			}
 		} catch (err) {
 			console.error(err);
@@ -143,7 +139,6 @@ const MyBookings = () => {
 	};
 
 	const handleFilter = (status) => {
-		console.log(status);
 		setView(status);
 		setPage(1);
 	};

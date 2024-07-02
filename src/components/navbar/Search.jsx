@@ -71,14 +71,14 @@ const VenueSearch = ({ onCitySelect, onSearchVenues, city }) => {
 	});
 
 	const highlightText = (text, highlight) => {
-		const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+		const index = text.toLowerCase().indexOf(highlight.toLowerCase());
+		if (index === -1) return <span>{text}</span>;
+
 		return (
 			<span>
-				{parts.map((part, index) => (
-					<span key={index} className={part.toLowerCase() === highlight.toLowerCase() ? 'font-semibold' : ''}>
-						{part}
-					</span>
-				))}
+				{text.slice(0, index)}
+				<span className="font-semibold text-gray-900">{text.slice(index, index + highlight.length)}</span>
+				{text.slice(index + highlight.length)}
 			</span>
 		);
 	};
@@ -110,14 +110,17 @@ const VenueSearch = ({ onCitySelect, onSearchVenues, city }) => {
 							})}
 						/>
 					</div>
-					<ul {...getMenuProps()} className="absolute overflow-hidden  w-full bg-white mt-1 rounded-md shadow-lg">
-						{isOpen && items.length === 0 && !loading && noResults && <li className="p-2 text-gray-500">No results found</li>}
+					<ul
+						{...getMenuProps()}
+						className="absolute overflow-hidden  w-full bg-white mt-1 rounded-md shadow-lg max-h-60 overflow-y-auto   text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+					>
+						{isOpen && items.length === 0 && !loading && noResults && <li className=" text-sm  p-2 text-gray-900  py-2">No results found</li>}
 						{isOpen &&
 							items.map((item, index) => (
 								<li
 									{...getItemProps({ item, index })}
 									key={item.id}
-									className={`cursor-pointer  p-2 ${highlightedIndex === index ? 'bg-gray-50' : ''}`}
+									className={`cursor-pointer text-sm  p-2 text-gray-600 py-2 ${highlightedIndex === index ? 'bg-gray-50' : ''}`}
 								>
 									{highlightText(item.name, inputValue)}
 								</li>

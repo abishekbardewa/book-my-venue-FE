@@ -62,8 +62,6 @@ const PropertyDetailPage = () => {
 				data: { data },
 			} = await axiosPrivate.get(`/property/${id}`);
 			setProperty(data);
-
-			console.log(data);
 		} catch (error) {
 			console.log(error);
 		} finally {

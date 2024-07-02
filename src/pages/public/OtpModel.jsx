@@ -17,7 +17,7 @@ const inputStyle = {
 	margin: '0 4px',
 	fontSize: '1rem',
 	borderRadius: '0.5rem',
-	// border: '1px solid #ccc',
+
 	textAlign: 'center',
 	color: '#000',
 	backgroundColor: '#fff',
@@ -31,7 +31,6 @@ const OtpModel = ({ email, onPrev, onClose }) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [otp, setOtp] = useState('');
 	const [showOnboarding, setShowOnboarding] = useState(false);
-	const [resend, setResend] = useState(false);
 	const navigate = useNavigate();
 	const [newUser, setNewUser] = useState({});
 	const dispatch = useDispatch();
@@ -61,10 +60,7 @@ const OtpModel = ({ email, onPrev, onClose }) => {
 		try {
 			setIsSubmitting(true);
 			const { data } = await verifyOtp();
-			console.log(data);
-			console.log('Response', data);
 			if (data.isNewUser && data.email) {
-				console.log('object');
 				setNewUser(data);
 				setShowOnboarding(true);
 				setIsSubmitting(false);

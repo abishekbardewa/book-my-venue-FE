@@ -46,7 +46,7 @@ const PropertyPage = () => {
 	}, [getOwnerProperties, page]);
 
 	const deleteProperty = async (id, canDelete) => {
-		if (canDelete) {
+		if (!canDelete) {
 			setShowCannotModal(true);
 			return;
 		}

@@ -14,12 +14,15 @@ import { format } from 'date-fns';
 import { formatPrice } from '../../utils';
 import ConfirmModal from '../../components/common/ConfirmModal';
 import Pagination from '../../components/common/Pagination';
+import CanNotDeleteModal from '../../components/common/CanNotDeleteModal';
+import { MdOutlineCancel } from 'react-icons/md';
 const PropertyPage = () => {
 	const navigate = useNavigate();
 	const user = useSelector(selectUser);
 	const [loading, setLoading] = useState(false);
 	const [properties, setProperties] = useState([]);
 	const [showModal, setShowModal] = useState(false);
+	const [showCannotModal, setShowCannotModal] = useState(false);
 	const [selectedPropertyId, setSelectedPropertyId] = useState(null);
 	const [page, setPage] = useState(1);
 	const [totalCount, setTotalCount] = useState(0);
@@ -42,7 +45,11 @@ const PropertyPage = () => {
 		getOwnerProperties();
 	}, [getOwnerProperties, page]);
 
-	const deleteProperty = async (id) => {
+	const deleteProperty = async (id, canDelete) => {
+		if (canDelete) {
+			setShowCannotModal(true);
+			return;
+		}
 		setSelectedPropertyId(id);
 		setShowModal(true);
 	};
@@ -75,6 +82,9 @@ const PropertyPage = () => {
 	const handleCancel = () => {
 		setShowModal(false);
 		setSelectedPropertyId(null);
+	};
+	const handleCannotDelete = () => {
+		setShowCannotModal(false);
 	};
 
 	if (loading) {
@@ -157,7 +167,10 @@ const PropertyPage = () => {
 															<div className="text-indigo-600 hover:text-indigo-900" onClick={() => goto(property?.id)}>
 																<FaPenToSquare className="h-5 w-5 text-primary" />
 															</div>
-															<div className="text-indigo-600 hover:text-indigo-900" onClick={() => deleteProperty(property?.id)}>
+															<div
+																className="text-indigo-600 hover:text-indigo-900"
+																onClick={() => deleteProperty(property?.id, property?.canDelete)}
+															>
 																<FaTrash className="h-5 w-5 text-red-600" />
 															</div>
 														</div>
@@ -196,6 +209,14 @@ const PropertyPage = () => {
 					cancelDisabled={loading}
 					btnClass={'text-white bg-red-600 hover:bg-red-800 focus:ring-red-300 border-red-600'}
 					icon={<FaTrash className="w-10 h-10 text-red-600" />}
+				/>
+			)}
+			{showCannotModal && (
+				<CanNotDeleteModal
+					title="Property Deletion error"
+					message="This property cannot be deleted as it has active or pending bookings."
+					onCancel={handleCannotDelete}
+					icon={<MdOutlineCancel className="w-10 h-10 text-red-600" />}
 				/>
 			)}
 		</>

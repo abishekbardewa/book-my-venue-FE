@@ -97,8 +97,17 @@ const OtpModel = ({ email, onPrev, onClose }) => {
 					</div>
 					<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center text-black mt-6 gap-10">
 						<div className="flex flex-col justify-center items-center">
-							Enter the code we've sent via Email to
-							<span className="text-primary text-sm block">{email}</span>
+							{email.endsWith('@venue.com') ? (
+								<>
+									Enter the code (6 zeros)
+									<span className="text-primary text-sm block">000000</span>
+								</>
+							) : (
+								<>
+									Enter the code we've sent via Email to
+									<span className="text-primary text-sm block">{email}</span>
+								</>
+							)}
 						</div>
 						<div className="flex items-center justify-center text-black">
 							<OtpInput
@@ -127,10 +136,14 @@ const OtpModel = ({ email, onPrev, onClose }) => {
 								{isSubmitting ? 'Loading' : 'Verify OTP'}
 							</Button>
 							<p className="text-sm text-gray-600 mt-6 pb-4">
-								No email? Look in spam or{' '}
-								<span onClick={resendOtp} className="font-semibold text-primary-500 cursor-pointer hover:underline">
-									try sending again.
-								</span>
+								{!email.endsWith('@venue.com') && (
+									<>
+										No email? Look in spam or{' '}
+										<span onClick={resendOtp} className="font-semibold text-primary-500 cursor-pointer hover:underline">
+											try sending again.
+										</span>
+									</>
+								)}
 							</p>
 						</div>
 					</form>

@@ -99,6 +99,7 @@ const LoginPage = ({ isOpen, onClose }) => {
 						<>
 							<div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
 								<h3 className="text-xl font-semibold text-gray-900">Log in or sign up</h3>
+
 								<button
 									type="button"
 									onClick={onClose}
@@ -110,6 +111,10 @@ const LoginPage = ({ isOpen, onClose }) => {
 									<span className="sr-only">Close modal</span>
 								</button>
 							</div>
+							<div className="text-gray-600 text-sm p-4 pb-0 text-center">
+								Use <em className="text-primary">anything@venue.com</em> for demo account
+							</div>
+
 							<div className="p-4 md:p-5 ">
 								<form className="space-y-4 mb-4" onSubmit={handleSubmit(onSubmit)}>
 									<div>
